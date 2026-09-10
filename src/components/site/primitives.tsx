@@ -45,9 +45,9 @@ export function PhotoPlaceholder({
   className = "",
 }: {
   label: string;
-  ratio?: string;
-  invert?: boolean;
-  className?: string;
+  ratio?: string | undefined;
+  invert?: boolean | undefined;
+  className?: string | undefined;
 }) {
   return (
     <div
@@ -109,10 +109,10 @@ export function ActionLink({
   variant = "outline",
   className = "",
 }: {
-  href?: string;
+  href?: string | undefined;
   children: ReactNode;
-  variant?: "solid" | "outline" | "invert";
-  className?: string;
+  variant?: "solid" | "outline" | "invert" | undefined;
+  className?: string | undefined;
 }) {
   const cls = `${
     variant === "solid" ? "btn-solid" : variant === "invert" ? "btn-invert" : "btn-outline"
