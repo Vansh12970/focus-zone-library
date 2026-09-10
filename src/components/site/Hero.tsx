@@ -33,24 +33,25 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-14 grid grid-cols-1 gap-6 border-t pt-6 sm:grid-cols-3">
-            {[
-              { k: "ESTABLISHED", v: site.established },
-              { k: "LOCALITY", v: site.locality },
-              { k: "HOURS", v: site.openingHours },
-            ].map((m) => (
-              <div key={m.k}>
-                <dt className="label text-muted-foreground">{m.k}</dt>
-                <dd className="mt-1 font-mono text-[0.8125rem]">{m.v}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 lg:row-span-2">
           <PhotoPlaceholder label="[LIBRARY HERO PHOTO]" ratio="3 / 4" />
           <p className="label mt-3 text-muted-foreground">FIG. 00 — THE LIBRARY</p>
         </div>
+
+        <dl className="grid grid-cols-1 gap-6 border-t pt-6 sm:grid-cols-3 lg:col-span-7 lg:pr-10">
+          {[
+            { k: "ESTABLISHED", v: site.established },
+            { k: "LOCALITY", v: site.locality },
+            { k: "HOURS", v: site.openingHours },
+          ].map((m) => (
+            <div key={m.k}>
+              <dt className="label text-muted-foreground">{m.k}</dt>
+              <dd className="mt-1 font-mono text-[0.8125rem]">{m.v}</dd>
+            </div>
+          ))}
+        </dl>
       </Container>
 
       <Container className="flex items-center gap-3 border-t py-4">
