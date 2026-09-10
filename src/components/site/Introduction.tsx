@@ -1,5 +1,5 @@
 import { Container, Meta, PhotoPlaceholder, SectionHeader } from "./primitives";
-import { site } from "@/content/site";
+import { isPlaceholder, site } from "@/content/site";
 
 export function Introduction() {
   return (
@@ -18,7 +18,13 @@ export function Introduction() {
                 </>
               }
             />
-            <p className="dropcap max-w-[42ch] text-lg">{site.introduction}</p>
+            <p
+              className={`max-w-[42ch] text-lg ${
+                isPlaceholder(site.introduction) ? "" : "dropcap"
+              }`}
+            >
+              {site.introduction}
+            </p>
             <p className="mt-8 max-w-[42ch] text-muted-foreground">{site.description}</p>
           </div>
 
