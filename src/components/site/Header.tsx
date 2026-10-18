@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { Container } from "./primitives";
 import { navItems, site } from "@/content/site";
+import { libraryAssets } from "@/config/library-assets";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const [logoFailed, setLogoFailed] = useState(false);
 
   useEffect(() => {
     const ids = [...navItems.map((n) => n.href.slice(1)), "visit"];
@@ -26,17 +28,32 @@ export function Header() {
     return () => observer.disconnect();
   }, []);
 
+  const brand = (
+    <>
+      {logoFailed ? (
+        <span
+          aria-hidden
+          className="flex h-7 w-7 items-center justify-center border border-foreground font-mono text-[0.625rem]"
+        >
+          FZ
+        </span>
+      ) : (
+        <img
+          src={libraryAssets.branding.logo}
+          alt=""
+          onError={() => setLogoFailed(true)}
+          className="h-8 w-auto object-contain"
+        />
+      )}
+      <span className="font-display text-lg tracking-tight">{site.name}</span>
+    </>
+  );
+
   return (
     <header className="sticky top-0 z-50 border-b border-foreground bg-background">
       <Container className="flex h-16 items-center justify-between gap-6">
         <a href="#top" className="flex items-center gap-3">
-          <span
-            aria-hidden
-            className="flex h-7 w-7 items-center justify-center border border-foreground font-mono text-[0.625rem]"
-          >
-            L
-          </span>
-          <span className="font-display text-lg tracking-tight">{site.name}</span>
+          {brand}
           <span className="sr-only">{site.name} — home</span>
         </a>
 
@@ -75,7 +92,7 @@ export function Header() {
       {open && (
         <div id="mobile-menu" className="border-t border-foreground bg-background lg:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
-            {[...navItems, { label: "VISIT US", href: "#visit" }].map((n) => (
+            {navItems.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
