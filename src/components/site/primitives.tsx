@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { isPlaceholder, site } from "@/content/site";
 
 export function Container({
@@ -24,14 +24,10 @@ export function SectionHeader({
 }) {
   return (
     <header className="mb-12 md:mb-20">
-      <p className={`label ${invert ? "opacity-60" : "text-muted-foreground"}`}>
+      <p className={`label ${invert ? "opacity-60" : "text-muted-foreground}`}>
         {index} / {kicker}
       </p>
-      <h2
-        className={`mt-6 max-w-[22ch] text-[2.5rem] leading-[0.95] md:text-[3.5rem] lg:text-[4.25rem] ${
-          invert ? "" : ""
-        }`}
-      >
+      <h2 className="mt-6 max-w-[22ch] text-[2.5rem] leading-[0.95] md:text-[3.5rem] lg:text-[4.25rem]">
         {heading}
       </h2>
     </header>
@@ -73,6 +69,52 @@ export function PhotoPlaceholder({
   );
 }
 
+/**
+ * Renders a real photo from src/config/library-assets.ts when the file
+ * exists; otherwise falls back to the neutral placeholder so a missing
+ * upload never shows a broken image.
+ */
+export function AssetImage({
+  src,
+  alt,
+  placeholder,
+  ratio = "4 / 5",
+  invert = false,
+  className = "",
+  eager = false,
+}: {
+  src: string;
+  alt: string;
+  placeholder: string;
+  ratio?: string | undefined;
+  invert?: boolean | undefined;
+  className?: string | undefined;
+  eager?: boolean | undefined;
+}) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return <PhotoPlaceholder label={placeholder} ratio={ratio} invert={invert} className={className} />;
+  }
+
+  return (
+    <div
+      style={{ aspectRatio: ratio }}
+      className={`relative w-full overflow-hidden border ${
+        invert ? "border-background/40 bg-background/5" : "border-foreground bg-surface"
+      } ${className}`}
+    >
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        onError={() => setFailed(true)}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  );
+}
+
 export function Meta({
   items,
   invert = false,
@@ -81,7 +123,7 @@ export function Meta({
   invert?: boolean;
 }) {
   return (
-    <dl className={`grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3`}>
+    <dl className="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-3">
       {items.map((it) => (
         <div key={it.k} className={`border-t pt-3 ${invert ? "border-background/30" : ""}`}>
           <dt className={`label ${invert ? "opacity-60" : "text-muted-foreground"}`}>{it.k}</dt>
@@ -95,24 +137,25 @@ export function Meta({
 /* Contact links: never fabricate destinations for placeholder values. */
 export const telHref = (v: string) => (isPlaceholder(v) ? undefined : `tel:${v.replace(/\s+/g, "")}`);
 export const mailHref = (v: string) => (isPlaceholder(v) ? undefined : `mailto:${v}`);
-export const waHref = (v: string) =>
-  isPlaceholder(v) ? undefined : `https://wa.me/${v.replace(/[^\d]/g, "")}`;
-export const mapHref = () => {
-  if (site.mapUrl) return site.mapUrl;
-  if (isPlaceholder(site.address)) return undefined;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address)}`;
+export const waHref = (v: string, message?: string) => {
+  if (isPlaceholder(v)) return undefined;
+  const base = `https://wa.me/${v.replace(/[^\d]/g, "")}`;
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 };
+export const mapHref = () => (site.mapUrl ? site.mapUrl : undefined);
 
 export function ActionLink({
   href,
   children,
   variant = "outline",
   className = "",
+  external = false,
 }: {
   href?: string | undefined;
   children: ReactNode;
   variant?: "solid" | "outline" | "invert" | undefined;
   className?: string | undefined;
+  external?: boolean | undefined;
 }) {
   const cls = `${
     variant === "solid" ? "btn-solid" : variant === "invert" ? "btn-invert" : "btn-outline"
@@ -126,7 +169,11 @@ export function ActionLink({
     );
   }
   return (
-    <a className={cls} href={href}>
+    <a
+      className={cls}
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       {children}
     </a>
   );
