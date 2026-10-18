@@ -1,8 +1,44 @@
-import { BookOpen, Car, Clock, MapPin, Snowflake, Wifi, Zap } from "lucide-react";
+import {
+  Backpack,
+  BookOpen,
+  Cctv,
+  Cross,
+  DoorOpen,
+  HeartHandshake,
+  Lamp,
+  Leaf,
+  Newspaper,
+  Pin,
+  ShieldCheck,
+  Snowflake,
+  Table,
+  Target,
+  UtensilsCrossed,
+  Wifi,
+  Zap,
+} from "lucide-react";
 import { Container, SectionHeader } from "./primitives";
-import { facilities } from "@/content/site";
+import { facilities, site } from "@/content/site";
 
-const icons = { BookOpen, Car, Clock, MapPin, Snowflake, Wifi, Zap } as const;
+const icons = {
+  Backpack,
+  BookOpen,
+  Cctv,
+  Cross,
+  DoorOpen,
+  HeartHandshake,
+  Lamp,
+  Leaf,
+  Newspaper,
+  Pin,
+  ShieldCheck,
+  Snowflake,
+  Table,
+  Target,
+  UtensilsCrossed,
+  Wifi,
+  Zap,
+} as const;
 
 export function Facilities() {
   return (
@@ -22,6 +58,13 @@ export function Facilities() {
               }
             />
           </div>
+          <div className="lg:col-span-4 lg:pt-24">
+            <p className="max-w-[40ch] text-muted-foreground">
+              Thoughtfully arranged facilities, a comfortable study environment and practical
+              amenities to help you make the most of your study time.
+            </p>
+            <p className="label mt-6 text-muted-foreground">OPEN DAILY — {site.openingHours}</p>
+          </div>
         </div>
 
         <ul className="grid grid-cols-1 border-t border-foreground sm:grid-cols-2 lg:grid-cols-4">
@@ -32,7 +75,7 @@ export function Facilities() {
                 key={f.n}
                 className={`group border-b p-6 transition-colors duration-100 hover:bg-surface sm:p-8 ${
                   i % 2 === 1 ? "sm:border-l" : ""
-                } lg:border-l lg:first:border-l-0 lg:[&:nth-child(5)]:border-l-0`}
+                } lg:border-l lg:[&:nth-child(4n+1)]:border-l-0`}
               >
                 <div className="flex items-start justify-between">
                   <span className="font-display text-4xl">{f.n}</span>
@@ -46,9 +89,6 @@ export function Facilities() {
             );
           })}
         </ul>
-        <p className="label mt-6 text-muted-foreground">
-          LIST TO BE CONFIRMED — SHOW ONLY FACILITIES THAT ACTUALLY EXIST
-        </p>
       </Container>
     </section>
   );

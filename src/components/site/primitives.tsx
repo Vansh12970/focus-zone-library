@@ -24,7 +24,7 @@ export function SectionHeader({
 }) {
   return (
     <header className="mb-12 md:mb-20">
-      <p className={`label ${invert ? "opacity-60" : "text-muted-foreground}`}>
+      <p className={`label ${invert ? "opacity-60" : "text-muted-foreground"}`}>
         {index} / {kicker}
       </p>
       <h2 className="mt-6 max-w-[22ch] text-[2.5rem] leading-[0.95] md:text-[3.5rem] lg:text-[4.25rem]">
