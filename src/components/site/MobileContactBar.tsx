@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 export function MobileContactBar() {
   const actions = [
     { label: "CALL", href: telHref(site.phone), Icon: Phone },
-    { label: "WHATSAPP", href: waHref(site.whatsapp), Icon: MessageCircle },
+    { label: "WHATSAPP", href: waHref(site.whatsapp, site.whatsappMessage), Icon: MessageCircle },
     { label: "DIRECTIONS", href: mapHref(), Icon: MapPin },
   ];
 
@@ -16,6 +16,7 @@ export function MobileContactBar() {
           <a
             key={label}
             href={href}
+            {...(label === "CALL" ? {} : { target: "_blank", rel: "noopener noreferrer" })}
             className="label flex min-h-[52px] items-center justify-center gap-2 border-l border-background/30 first:border-l-0"
           >
             <Icon size={14} strokeWidth={1.25} aria-hidden />

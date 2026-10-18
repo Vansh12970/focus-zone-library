@@ -1,5 +1,6 @@
-import { Container, Meta, PhotoPlaceholder, SectionHeader } from "./primitives";
-import { isPlaceholder, site } from "@/content/site";
+import { AssetImage, Container, Meta, SectionHeader } from "./primitives";
+import { site } from "@/content/site";
+import { libraryAssets } from "@/config/library-assets";
 
 export function Introduction() {
   return (
@@ -18,18 +19,16 @@ export function Introduction() {
                 </>
               }
             />
-            <p
-              className={`max-w-[42ch] text-lg ${
-                isPlaceholder(site.introduction) ? "" : "dropcap"
-              }`}
-            >
-              {site.introduction}
-            </p>
-            <p className="mt-8 max-w-[42ch] text-muted-foreground">{site.description}</p>
+            <p className="dropcap max-w-[42ch] text-lg">{site.introduction}</p>
           </div>
 
           <div className="lg:col-span-7">
-            <PhotoPlaceholder label="[READING ROOM PHOTO]" ratio="16 / 11" />
+            <AssetImage
+              src={libraryAssets.interior.readingRoom01}
+              alt="Main reading room at Focus Zone Library"
+              placeholder="[READING ROOM PHOTO]"
+              ratio="16 / 11"
+            />
             <p className="label mt-3 text-muted-foreground">FIG. 01 — MAIN READING ROOM</p>
           </div>
         </div>
@@ -39,7 +38,7 @@ export function Introduction() {
             items={[
               { k: "LIBRARY", v: site.name },
               { k: "LOCATION", v: `${site.locality}, ${site.city}` },
-              { k: "ESTABLISHED", v: site.established },
+              { k: "HOURS", v: site.openingHours },
             ]}
           />
         </div>
