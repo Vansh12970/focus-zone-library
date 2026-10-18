@@ -7,10 +7,7 @@ import { Introduction } from "@/components/site/Introduction";
 import { Facilities } from "@/components/site/Facilities";
 import { Experience } from "@/components/site/Experience";
 import { About } from "@/components/site/About";
-import { Owner } from "@/components/site/Owner";
-import { Membership } from "@/components/site/Membership";
 import { Gallery } from "@/components/site/Gallery";
-import { Testimonials } from "@/components/site/Testimonials";
 import { Visit } from "@/components/site/Visit";
 import { Faq } from "@/components/site/Faq";
 import { Contact } from "@/components/site/Contact";
@@ -18,8 +15,8 @@ import { Footer } from "@/components/site/Footer";
 import { MobileContactBar } from "@/components/site/MobileContactBar";
 import { site } from "@/content/site";
 
-const title = `${site.name} — Library & Reading Space in ${site.city}`;
-const description = `${site.name} is a quiet library and reading space in ${site.locality}, ${site.city}. Reading room, study desks, Wi-Fi and membership details.`;
+const title = `${site.name} — Quiet Study & Reading Space in ${site.city}`;
+const description = `${site.name}, ${site.address}. Air-conditioned study space with spacious desks, Wi-Fi and personal storage. Open ${site.openingHours}.`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,11 +38,12 @@ export const Route = createFileRoute("/")({
           description,
           telephone: site.phone,
           email: site.email,
-          openingHours: site.openingHours,
-          foundingDate: site.established,
+          openingHours: "Mo-Su 07:00-22:00",
+          url: site.mapUrl,
+          sameAs: [site.instagramUrl],
           address: {
             "@type": "PostalAddress",
-            streetAddress: site.address,
+            streetAddress: `${site.address}, ${site.addressLine2}`,
             addressLocality: site.city,
           },
         }),
@@ -68,10 +66,7 @@ function Home() {
         <Facilities />
         <Experience />
         <About />
-        <Owner />
-        <Membership />
         <Gallery />
-        <Testimonials />
         <Visit />
         <Faq />
         <Contact />

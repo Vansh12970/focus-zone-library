@@ -1,4 +1,5 @@
-import { Container } from "./primitives";
+import { Facebook, Instagram } from "lucide-react";
+import { Container, mailHref, mapHref, telHref, waHref } from "./primitives";
 import { navItems, site } from "@/content/site";
 
 export function Footer({ year }: { year: string }) {
@@ -12,10 +13,11 @@ export function Footer({ year }: { year: string }) {
                 aria-hidden
                 className="flex h-7 w-7 items-center justify-center border border-background font-mono text-[0.625rem]"
               >
-                L
+                FZ
               </span>
               <span className="font-display text-xl">{site.name}</span>
             </div>
+            <p className="mt-3 label opacity-60">{site.tagline}</p>
             <p className="mt-6 max-w-[34ch] opacity-70">{site.description}</p>
           </div>
 
@@ -34,22 +36,68 @@ export function Footer({ year }: { year: string }) {
 
           <div className="md:col-span-3">
             <p className="label opacity-60">VISIT</p>
-            <p className="mt-4">{site.address}</p>
+            <p className="mt-4">
+              {site.address}
+              <br />
+              {site.addressLine2}
+            </p>
             <p className="label mt-3 opacity-70">{site.openingHours}</p>
+            <a
+              href={mapHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="label mt-4 inline-block underline-offset-4 hover:underline"
+            >
+              GET DIRECTIONS
+            </a>
           </div>
 
           <div className="md:col-span-3">
             <p className="label opacity-60">CONTACT</p>
             <ul className="mt-4 space-y-2">
-              <li>{site.phone}</li>
-              <li>{site.email}</li>
-              <li>{site.whatsapp}</li>
+              <li>
+                <a href={telHref(site.phone)} className="underline-offset-4 hover:underline">
+                  {site.phone}
+                </a>
+              </li>
+              <li>
+                <a href={mailHref(site.email)} className="underline-offset-4 hover:underline">
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={waHref(site.whatsapp, site.whatsappMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-4 hover:underline"
+                >
+                  WhatsApp — {site.whatsapp}
+                </a>
+              </li>
             </ul>
             <p className="label mt-6 opacity-60">SOCIAL</p>
-            <ul className="mt-3 space-y-2">
-              <li className="label">{site.instagram}</li>
-              <li className="label">{site.facebook}</li>
-            </ul>
+            <div className="mt-3 flex items-center gap-4">
+              <a
+                href={site.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Focus Zone Library on Instagram"
+                className="flex h-9 w-9 items-center justify-center border border-background/40 transition-colors duration-100 hover:bg-background hover:text-foreground"
+              >
+                <Instagram size={15} strokeWidth={1.25} aria-hidden />
+              </a>
+              <a
+                href={site.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Focus Zone Library on Instagram"
+                className="flex h-9 w-9 items-center justify-center border border-background/40 transition-colors duration-100 hover:bg-background hover:text-foreground"
+              >
+                <Facebook size={15} strokeWidth={1.25} aria-hidden />
+              </a>
+              <span className="label opacity-70">{site.instagramLabel}</span>
+            </div>
           </div>
         </div>
 

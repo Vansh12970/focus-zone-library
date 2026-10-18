@@ -1,4 +1,5 @@
-import { Container, PhotoPlaceholder, SectionHeader } from "./primitives";
+import { AssetImage, Container, SectionHeader } from "./primitives";
+import { libraryAssets } from "@/config/library-assets";
 import { experience } from "@/content/site";
 
 export function Experience() {
@@ -35,7 +36,7 @@ export function Experience() {
             </ul>
           </div>
           <div className="lg:col-span-5">
-            <PhotoPlaceholder label="[STUDY AREA PHOTO]" ratio="3 / 4" invert />
+            <AssetImage src={libraryAssets.interior.studyDesks} alt="Study desks at Focus Zone Library" placeholder="[STUDY AREA PHOTO]" ratio="3 / 4" invert />
             <p className="label mt-3 opacity-60">FIG. 02 — STUDY AREA</p>
           </div>
         </div>

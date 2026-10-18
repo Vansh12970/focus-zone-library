@@ -1,5 +1,6 @@
-import { Container, Meta, PhotoPlaceholder, SectionHeader } from "./primitives";
+import { AssetImage, Container, Meta, SectionHeader } from "./primitives";
 import { site } from "@/content/site";
+import { libraryAssets } from "@/config/library-assets";
 
 export function About() {
   return (
@@ -7,8 +8,13 @@ export function About() {
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5 lg:order-2">
-            <PhotoPlaceholder label="[BOOKSHELF PHOTO]" ratio="4 / 5" />
-            <p className="label mt-3 text-muted-foreground">FIG. 03 — BOOKSHELVES</p>
+            <AssetImage
+              src={libraryAssets.interior.entrance}
+              alt="Entrance of Focus Zone Library, City Heart, Kharar"
+              placeholder="[LIBRARY ENTRANCE PHOTO]"
+              ratio="4 / 5"
+            />
+            <p className="label mt-3 text-muted-foreground">FIG. 03 — ENTRANCE</p>
           </div>
 
           <div className="lg:col-span-7 lg:order-1 lg:pr-12">
@@ -17,9 +23,9 @@ export function About() {
               kicker="ABOUT THE LIBRARY"
               heading={
                 <>
-                  More than
+                  Where dream
                   <br />
-                  a place for books.
+                  meets reality.
                 </>
               }
             />
@@ -28,8 +34,8 @@ export function About() {
             <div className="mt-12 border-t pt-8">
               <Meta
                 items={[
-                  { k: "EST.", v: site.established },
                   { k: "LOCATION", v: `${site.locality}, ${site.city}` },
+                  { k: "HOURS", v: site.openingHours },
                   { k: "TYPE", v: site.type },
                 ]}
               />
