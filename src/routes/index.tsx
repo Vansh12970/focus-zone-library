@@ -15,7 +15,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileContactBar } from "@/components/site/MobileContactBar";
 import { site } from "@/content/site";
 
-const title = `${site.name} — Quiet Study & Reading Space in ${site.city}`;
+const title = `${site.name} Quiet Study & Reading Space`;
 const description = `${site.name}, ${site.address}. Air-conditioned study space with spacious desks, Wi-Fi and personal storage. Open ${site.openingHours}.`;
 
 export const Route = createFileRoute("/")({

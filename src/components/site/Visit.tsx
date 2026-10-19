@@ -77,14 +77,14 @@ export function Visit() {
               />
               <MapPin size={28} strokeWidth={1.25} aria-hidden className="relative" />
               <span className="label relative text-muted-foreground">
-                {site.address}, {site.addressLine2}
+                {site.address}
               </span>
               <span className="label relative inline-flex items-center gap-2 border border-foreground px-4 py-2 group-hover:bg-foreground group-hover:text-background">
                 OPEN IN GOOGLE MAPS <ArrowRight size={13} strokeWidth={1.25} aria-hidden />
               </span>
             </a>
             <p className="label mt-3 text-muted-foreground">
-              FIG. 04 — LOCATION, {site.locality}, {site.city}
+              LOCATION {site.locality}, {site.city}
             </p>
           </div>
         </div>

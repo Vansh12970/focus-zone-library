@@ -38,15 +38,23 @@ export function Hero() {
         </div>
 
         <div className="lg:col-span-5 lg:row-span-2">
-          <AssetImage
-            src={libraryAssets.hero}
-            alt="Inside Focus Zone Library, Kharar"
-            placeholder="[LIBRARY HERO PHOTO]"
-            ratio="3 / 4"
-            eager
-          />
-          <p className="label mt-3 text-muted-foreground">FIG. 00 — THE LIBRARY</p>
-        </div>
+        <video
+          className="aspect-[3/4] w-full border border-foreground object-cover"
+          src="/images/focus-zone-library/videos/library-tour.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Introduction video showing Focus Zone Library in Kharar"
+        >
+          Your browser does not support HTML video.
+        </video>
+
+        <p className="label mt-3 text-muted-foreground">
+          FOCUS ZONE LIBRARY
+        </p>
+      </div>
 
         <dl className="grid grid-cols-1 gap-6 border-t pt-6 sm:grid-cols-3 lg:col-span-7 lg:pr-10">
           {[

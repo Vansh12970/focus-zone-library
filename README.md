@@ -1,24 +1,50 @@
 # Focus Zone Library
 
-build this
+Website for Focus Zone Library, Kharar.
 
-This project was built with [Lovable](https://lovable.dev).
+## Requirements
 
-## Build with Lovable
+- [Node.js](https://nodejs.org/)
+- npm
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/7fe60fe8-c65a-42c3-8142-2187a6c557b0).
+## Getting Started
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Clone the repository and open the project folder:
 
-## Development
+```bash
+git clone https://github.com/Vansh12970/focus-zone-library.git
+cd focus-zone-library
+```
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Install dependencies:
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
+
+Open the local URL displayed in the terminal.
+
+## Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+- `public/` — Static assets such as images and logos.
+- `src/` — Application source code.
+- `docs/` — Project documentation.
+
+## GitHub
+
+Repository: https://github.com/Vansh12970/focus-zone-library
+

@@ -13,13 +13,12 @@ export function Introduction() {
               kicker="THE LIBRARY"
               heading={
                 <>
-                  A space
-                  <br />
-                  for focus.
+                  A space for focus...
                 </>
               }
             />
-            <p className="dropcap max-w-[42ch] text-lg">{site.introduction}</p>
+            <p className="dropcap max-w-[40ch] text-lg text-justify">{site.introduction}
+            </p>
           </div>
 
           <div className="lg:col-span-7">
@@ -29,7 +28,7 @@ export function Introduction() {
               placeholder="[READING ROOM PHOTO]"
               ratio="16 / 11"
             />
-            <p className="label mt-3 text-muted-foreground">FIG. 01 — MAIN READING ROOM</p>
+            <p className="label mt-3 text-muted-foreground">READING ROOM</p>
           </div>
         </div>
 
@@ -38,7 +37,6 @@ export function Introduction() {
             items={[
               { k: "LIBRARY", v: site.name },
               { k: "LOCATION", v: `${site.locality}, ${site.city}` },
-              { k: "HOURS", v: site.openingHours },
             ]}
           />
         </div>

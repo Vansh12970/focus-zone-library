@@ -51,9 +51,7 @@ export function Facilities() {
               kicker="FACILITIES"
               heading={
                 <>
-                  Everything you need
-                  <br />
-                  to focus.
+                  Everything you need to focus.
                 </>
               }
             />
@@ -63,7 +61,6 @@ export function Facilities() {
               Thoughtfully arranged facilities, a comfortable study environment and practical
               amenities to help you make the most of your study time.
             </p>
-            <p className="label mt-6 text-muted-foreground">OPEN DAILY — {site.openingHours}</p>
           </div>
         </div>
 

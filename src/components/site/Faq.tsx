@@ -9,7 +9,7 @@ export function Faq() {
   return (
     <section id="faq" className="border-b border-foreground bg-surface py-16 md:py-28">
       <Container>
-        <SectionHeader index="07" kicker="FAQ" heading="Questions, answered." />
+        <SectionHeader index="07" kicker="FAQ" heading="Questions & answered." />
 
         <div className="grid grid-cols-1 lg:grid-cols-12">
           <div className="lg:col-span-9">

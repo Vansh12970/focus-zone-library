@@ -9,12 +9,6 @@ export function Footer({ year }: { year: string }) {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <div className="flex items-center gap-3">
-              <span
-                aria-hidden
-                className="flex h-7 w-7 items-center justify-center border border-background font-mono text-[0.625rem]"
-              >
-                FZ
-              </span>
               <span className="font-display text-xl">{site.name}</span>
             </div>
             <p className="mt-3 label opacity-60">{site.tagline}</p>

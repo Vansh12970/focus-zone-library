@@ -12,11 +12,7 @@ export function Experience() {
           invert
           heading={
             <>
-              Arrive.
-              <br />
-              Focus.
-              <br />
-              Stay.
+              Arrive, Focus, Stay.
             </>
           }
         />
@@ -37,7 +33,7 @@ export function Experience() {
           </div>
           <div className="lg:col-span-5">
             <AssetImage src={libraryAssets.interior.studyDesks} alt="Study desks at Focus Zone Library" placeholder="[STUDY AREA PHOTO]" ratio="3 / 4" invert />
-            <p className="label mt-3 opacity-60">FIG. 02 — STUDY AREA</p>
+            <p className="label mt-3 opacity-60">STUDY AREA</p>
           </div>
         </div>
       </Container>
